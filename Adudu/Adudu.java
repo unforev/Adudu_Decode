@@ -48,11 +48,11 @@ public class Adudu {
         else if (!Adudu_Gamepad1.x) Adudu_Intake.stop();
 
         // Outtake distance_sensor : button : y
-        if(Adudu_Gamepad1.y) Adudu_Outtake.Operate(1);
+        if(Adudu_Gamepad1.y) Adudu_Outtake.Operate(2);
         else if( !Adudu_Gamepad1.y) Adudu_Outtake.Reset_Wait();
 
         // Outtake encoder : button : b
-        if( Adudu_Gamepad1.b) Adudu_Outtake.Operate(2);
+        if( Adudu_Gamepad1.b) Adudu_Outtake.Operate(1);
         else if( !Adudu_Gamepad1.b) Adudu_Outtake.update();
 
 
