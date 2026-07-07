@@ -20,7 +20,6 @@ public class Gamepad_test extends OpMode {
         double z = gamepad1.right_stick_x;
 
         drivetrain.Operate(x, y, z);
-        drivetrain.Initiate();
     }
 
 
