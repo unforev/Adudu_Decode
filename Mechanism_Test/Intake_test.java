@@ -15,6 +15,7 @@ public class Intake_test extends OpMode {
     @Override
     public void init() {
         Adudu_Intake.Initiate();
+        Adudu_Gamepad1.x = false;
     }
 
     @Override
