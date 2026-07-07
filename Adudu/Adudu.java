@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.teamcode.Mechanism.Drivetrain;
 import org.firstinspires.ftc.teamcode.Mechanism.Intake;
 import org.firstinspires.ftc.teamcode.Mechanism.Outtake;
-import org.firstinspires.ftc.teamcode.Mechanism.Transfer;
 
 
 public class Adudu {
@@ -31,6 +30,10 @@ public class Adudu {
         Adudu_Drivetrain.Initiate();
         Adudu_Intake.Initiate();
         Adudu_Outtake.Initiate();
+
+        Adudu_Gamepad1.x = false;
+        Adudu_Gamepad1.y = false;
+        Adudu_Gamepad1.b = false;
     }
     public void Operate(LinearOpMode Adudu_opMode){
         while(Adudu_opMode.opModeIsActive()){
@@ -44,16 +47,28 @@ public class Adudu {
         Adudu_Drivetrain.Operate(x, y, z);
 
         // Intake : button : x
-        if(Adudu_Gamepad1.x) Adudu_Intake.Operate();
-        else if (!Adudu_Gamepad1.x) Adudu_Intake.stop();
-
-        // Outtake distance_sensor : button : y
-        if(Adudu_Gamepad1.y) Adudu_Outtake.Operate(2);
-        else if( !Adudu_Gamepad1.y) Adudu_Outtake.Reset_Wait();
+        if(Adudu_Gamepad1.x)
+        {
+            Adudu_Intake.Operate();
+            Adudu_Intake.stop();
+            Adudu_Gamepad1.x = false;
+        }
 
         // Outtake encoder : button : b
-        if( Adudu_Gamepad1.b) Adudu_Outtake.Operate(1);
-        else if( !Adudu_Gamepad1.b) Adudu_Outtake.update();
+        if( Adudu_Gamepad1.b)
+        {
+            Adudu_Outtake.Operate(1);
+            Adudu_Outtake.update();
+            Adudu_Gamepad1.b = false;
+        }
+
+        // Outtake distance_sensor : button : y
+        if(Adudu_Gamepad1.y)
+        {
+            Adudu_Outtake.Operate(2);
+            Adudu_Outtake.Reset_Wait();
+            Adudu_Gamepad1.y = false;
+        }
 
 
     }
