@@ -16,6 +16,8 @@ public class Outtake_test extends OpMode {
     @Override
     public void init(){
         Adudu_Outtake.Initiate();
+        Adudu_Gamepad1.b = false;
+        Adudu_Gamepad1.y = false;
     }
 
     @Override
